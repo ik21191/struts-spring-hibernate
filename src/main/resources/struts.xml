@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<constant name="struts.devMode" value="false" />
+<constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory" />
+<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+
+<package name="user" namespace="/user" extends="struts-default">
+
+<action name="login">
+	<result>login.jsp</result>
+</action>
+
+<action name="register">
+	<result>register.jsp</result>
+</action>
+
+<!-- <action name="saveUser" class="com.mypack.struts2.actions.RegisterAction">
+	<result name="details">details.jsp</result>
+	<result name="details">registerError.jsp</result>
+</action> -->
+
+<action name="validateLogin" class="com.mypack.struts2.actions.LoginAction">
+	<result name = "success">welcome.jsp</result>
+	<result name = "error">error.jsp</result>
+</action>
+
+</package> 
+</struts>
