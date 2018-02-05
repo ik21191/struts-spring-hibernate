@@ -20,7 +20,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	@Override
 	@Transactional
 	public boolean insertUser(User user) {
-		Long primaryKey = (Long) getHibernateTemplate().save(user);
+		Integer primaryKey = (Integer) getHibernateTemplate().save(user);
 		if(primaryKey.intValue() != 0) {
 			return true;
 		}

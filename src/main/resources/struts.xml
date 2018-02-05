@@ -4,29 +4,54 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-<constant name="struts.devMode" value="false" />
-<constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory" />
-<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory" />
+	<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
 
-<package name="user" namespace="/user" extends="struts-default">
+	<package name="user" namespace="/user" extends="struts-default">
 
-<action name="login">
-	<result>login.jsp</result>
-</action>
+		<interceptors>
+			<interceptor-stack name="appDefaultStack">
+				<interceptor-ref name="defaultStack">
+					<param name="exception.logEnabled">true</param>
+					<param name="exception.logLevel">ERROR</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
 
-<action name="register">
-	<result>register.jsp</result>
-</action>
+		<default-interceptor-ref name="appDefaultStack" />
 
-<!-- <action name="saveUser" class="com.mypack.struts2.actions.RegisterAction">
-	<result name="details">details.jsp</result>
-	<result name="details">registerError.jsp</result>
-</action> -->
+		<global-results>
+			<result name="exception">/exception/exception.jsp</result>
+			<result name="runtime_exception">/exception/runtime_exception.jsp</result>
+			<result name="error">/exception/error.jsp</result>
+		</global-results>
 
-<action name="validateLogin" class="com.mypack.struts2.actions.LoginAction">
-	<result name = "success">welcome.jsp</result>
-	<result name = "error">error.jsp</result>
-</action>
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception" result="exception" />
+			<exception-mapping exception="java.lang.Error" result="error" />
+			<exception-mapping exception="java.lang.RuntimeException" result="runtime_exception" />
+		</global-exception-mappings>
 
-</package> 
+		<action name="login">
+			<result>login.jsp</result>
+		</action>
+
+		<action name="register">
+			<result>register.jsp</result>
+		</action>
+
+		<action name="saveUser" class="com.mypack.struts2.actions.RegisterAction">
+			<exception-mapping exception="java.io.IOException"
+				result="login"></exception-mapping>
+			<result name="details">details.jsp</result>
+			<result name="error">registerError.jsp</result>
+		</action>
+
+		<action name="validateLogin" class="com.mypack.struts2.actions.LoginAction">
+			<result name="success">welcome.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+
+	</package>
 </struts>

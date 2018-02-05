@@ -5,6 +5,8 @@ public class User {
 	private String userid;
 	private String password;
 	
+	private UserDetails userDetails;
+	
 	public int getId() {
 		return id;
 	}
@@ -35,6 +37,16 @@ public class User {
 	}
 
 
+	public UserDetails getUserDetails() {
+		return userDetails;
+	}
+
+
+	public void setUserDetails(UserDetails userDetails) {
+		this.userDetails = userDetails;
+	}
+
+	
 	
 	
 }

@@ -1,24 +1,25 @@
-<!DOCTYPE hibernate-mapping
-PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
 <hibernate-mapping>
 	<class name="com.mypack.beans.User" table="USER">
 		<id name="id" type="int" column="ID">
-			<generator class="identity" />
+			<generator class="increment"/>
 		</id>
 		<property name="userid" type="string">
-			<column name="USERID" length="100" not-null="true" />
+			<column name="USERID" length="100" not-null="true" unique="true"/>
 		</property>
 		<property name="password" type="string">
 			<column name="PASSWORD" length="64" />
 		</property>
-		<!-- <many-to-one name="addressDetails" column="address_id" class="com.mypack.beans.UserDetails" not-null="true"/> -->
+		<many-to-one name="userDetails" column="details_id" class="com.mypack.beans.UserDetails" cascade="all"/>
 		
 	</class>
 	
-	<!-- <class name="com.mypack.beans.UserDetails" table="USERDETAILS">
+	<class name="com.mypack.beans.UserDetails" table="USERDETAILS">
 		<id name="id" type="int" column="ID">
-			<generator class="identity" />
+			<generator class="increment"/>
 		</id>
 		<property name="firstName" type="string">
 			<column name="FIRSTNAME" length="64" />
@@ -32,7 +33,7 @@ PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 		<property name="age" type="int">
 			<column name="AGE" />
 		</property>
-	</class> -->
+	</class>
 	
 	
 	

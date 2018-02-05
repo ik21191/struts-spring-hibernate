@@ -10,10 +10,10 @@
 	<s:form action="/user/saveUser">
 		<s:textfield name="userid" label="User ID" />
 		<s:password name="password" label="Password" type="password" />
-		<s:textfield name="user.firstName" label="First Name" />
-		<s:textfield name="user.lastName" label="Last Name" />
-		<s:textfield name="user.emailId" label="User ID" />
-		<s:textfield name="user.age" label="Age" />
+		<s:textfield name="userDetails.firstName" label="First Name" />
+		<s:textfield name="userDetails.lastName" label="Last Name" />
+		<s:textfield name="userDetails.emailId" label="Email ID" />
+		<s:textfield name="userDetails.age" label="Age" />
 		<s:submit value="Register" />
 		<%-- <s:token /> --%>
 	</s:form>
