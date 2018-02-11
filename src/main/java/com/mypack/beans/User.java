@@ -1,11 +1,14 @@
 package com.mypack.beans;
 
+import java.util.Set;
+
 public class User {
 	private int id;
 	private String userid;
 	private String password;
 	
 	private UserDetails userDetails;
+	private Set<String> hobbies;
 	
 	public int getId() {
 		return id;
@@ -46,7 +49,14 @@ public class User {
 		this.userDetails = userDetails;
 	}
 
-	
+	public Set<String> getHobbies() {
+		return hobbies;
+	}
+
+
+	public void setHobbies(Set<String> hobbies) {
+		this.hobbies = hobbies;
+	}
 	
 	
 }

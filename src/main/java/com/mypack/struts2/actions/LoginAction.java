@@ -20,10 +20,11 @@ public class LoginAction implements ModelDriven<User>, Preparable {
 	}
     
     public String execute() {
+    	log.info("execute() is called.");
     	String view = "error";
     	try {
-    		userService.getUser(user.getUserid());
-        	if(userService.getUser(user.getUserid()) != null) {
+    		user = userService.getUser(user.getUserid());
+        	if(user != null) {
         		view = "success";
         	}
     	} catch(Exception e) {

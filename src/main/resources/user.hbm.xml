@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC 
  "-//Hibernate/Hibernate Mapping DTD//EN"
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
-<hibernate-mapping>
+<hibernate-mapping auto-import="false">
 	<class name="com.mypack.beans.User" table="USER">
 		<id name="id" type="int" column="ID">
 			<generator class="increment"/>
@@ -13,7 +13,12 @@
 		<property name="password" type="string">
 			<column name="PASSWORD" length="64" />
 		</property>
-		<many-to-one name="userDetails" column="details_id" class="com.mypack.beans.UserDetails" cascade="all"/>
+		<many-to-one name="userDetails" column="details_id" class="com.mypack.beans.UserDetails" cascade="all" lazy="false"/>
+		
+		<set name="hobbies" table="user_hobby" cascade="all" lazy="false">
+			<key column="hobby_id" />
+			<element column="hobby_name" type="string"/>
+		</set>
 		
 	</class>
 	

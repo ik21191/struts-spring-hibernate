@@ -52,6 +52,11 @@
 			<result name="success">welcome.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
+		
+		<action name="users" class="com.mypack.struts2.actions.ManageUsers" method="displayAllUsers">
+			<result name="success">users.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
 
 	</package>
 </struts>

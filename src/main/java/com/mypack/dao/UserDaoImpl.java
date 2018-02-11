@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mypack.beans.User;
 
 @Repository("UserDao")
+@SuppressWarnings("unchecked")
 public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	private static final Logger log = Logger.getLogger(UserDaoImpl.class);
 	
@@ -27,15 +28,21 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		return false;
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
+	@Transactional(readOnly=true)
 	public User getUser(String userId) {
 		List<User> userList = null;
-		userList = (List<User>)getHibernateTemplate().find("from User where userid in (?)", userId);
+		userList = (List<User>)getHibernateTemplate().find("from com.mypack.beans.User where userid in (?)", userId);
 		if(userList != null && !userList.isEmpty()) {
 			return userList.get(0);
 		}
 		return null;
+	}
+	
+	@Override
+	@Transactional
+	public List<User> getAllUsers() {
+		return (List<User>)getHibernateTemplate().find("from com.mypack.beans.User");
+		
 	}
 }
