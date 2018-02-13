@@ -10,6 +10,7 @@ import com.mypack.service.UserService;
 public class ManageUsers {
 	
 	private List<User> users;
+	private int identifier;
 	
 	@Autowired
 	UserService userService;
@@ -21,7 +22,16 @@ public class ManageUsers {
 		}
 		return "error";
 	}
-
+	
+	public String deleteUser() {
+		boolean status = userService.deleteUser(identifier);
+		if(status) {
+			return "success";
+		} else {
+			return "error";
+		}
+	}
+	
 	public List<User> getUsers() {
 		return users;
 	}
@@ -29,6 +39,13 @@ public class ManageUsers {
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
+
 	
-	
+	public int getIdentifier() {
+		return identifier;
+	}
+
+	public void setIdentifier(int identifier) {
+		this.identifier = identifier;
+	}
 }

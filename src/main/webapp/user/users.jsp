@@ -6,7 +6,8 @@
 
 <s:iterator value="users" var="user">
 	
-	<li>ID: <a href="delete?userid=<s:property value='id'/>">Delete</a></li>
+	<li>ID: <a href="deleteUser?identifier=<s:property value='id'/>">Delete</a></li>&nbsp;&nbsp;
+	<li>ID: <a href="editUser?identifier=<s:property value='id'/>">Edit</a></li>
 	<li>User ID: <s:property value="userid"/></li>
 	<li>First Name: <s:property value="userDetails.firstName"/></li>
 	<li>Last Name: <s:property value="userDetails.lastName"/></li>
