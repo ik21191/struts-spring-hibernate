@@ -7,6 +7,7 @@ First Name: <s:property value="userDetails.firstName"/><br/>
 Last Name: <s:property value="userDetails.lastName"/><br/>
 Email ID: <s:property value="userDetails.emailId"/><br/>
 
+<br/><a href = "../">Home</a>
 </body>
 
 </html>

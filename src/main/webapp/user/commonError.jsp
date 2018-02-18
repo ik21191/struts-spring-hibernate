@@ -10,6 +10,6 @@
 </head>
 <body>
 <b>There was a problem while processing this request.</b>
-
+<br/><a href = "../">Home</a>
 </body>
 </html>

@@ -10,6 +10,7 @@
 	<s:form action="updateUser">
 	<s:hidden name="id" value="%{user.id}"/>
 		<s:textfield name="userid" value="%{user.userid}" label="User ID" />
+		<s:hidden name="password" value="%{user.password}"/>
 		<s:textfield name="userDetails.firstName" value="%{user.userDetails.firstName}" label="First Name" />
 		<s:textfield name="userDetails.lastName" value="%{user.userDetails.lastName}" label="Last Name" />
 		<s:textfield name="userDetails.emailId" value="%{user.userDetails.emailId}" label="Email ID" />
@@ -21,8 +22,9 @@
 			<s:checkbox name="hobbies" fieldValue="%{hobby}" label="%{hobby}"/>
 		</s:iterator>
 		
-		<s:submit value="Register" />
+		<s:submit value="Update" />
 		<%-- <s:token /> --%>
+		<br/><a href = "../">Home</a>
 	</s:form>
 
 </body>
