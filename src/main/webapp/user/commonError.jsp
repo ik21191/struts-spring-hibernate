@@ -9,7 +9,7 @@
 <title>Error Page</title>
 </head>
 <body>
-Error Registering
+<b>There was a problem while processing this request.</b>
 <br/><a href = "../">Home</a>
 </body>
 </html>

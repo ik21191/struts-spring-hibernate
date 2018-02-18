@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mypack.beans.User;
 
 @Repository("UserDao")
+@SuppressWarnings("unchecked")
 public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	private static final Logger log = Logger.getLogger(UserDaoImpl.class);
 	
@@ -27,9 +28,8 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		return false;
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
+	@Transactional(readOnly=true)
 	public User getUser(String userId) {
 		List<User> userList = null;
 		userList = (List<User>)getHibernateTemplate().find("from User where userid in (?)", userId);
@@ -38,4 +38,36 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		}
 		return null;
 	}
+	
+	@Override
+	@Transactional
+	public User getUser(int identifier) {
+		return getHibernateTemplate().get(User.class, identifier);
+	}
+	
+	@Override
+	@Transactional
+	public List<User> getAllUsers() {
+		return (List<User>)getHibernateTemplate().find("from User");
+		
+	}
+	
+	@Override
+	@Transactional
+	public boolean deleteUser(int id) {
+		User user = getHibernateTemplate().get(User.class, id);
+		if(user == null) {
+			return false;
+		}
+		getHibernateTemplate().delete(user);
+		return true;
+	}
+	
+	@Override
+	@Transactional
+	public boolean updateUser(User user) {
+		getHibernateTemplate().update(user);
+		return true;
+	}
+
 }

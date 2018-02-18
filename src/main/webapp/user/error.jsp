@@ -11,5 +11,6 @@
 <body>
 <h4>User Name or Password is wrong</h4>
 <s:include value="/index.jsp"></s:include>
+<br/><a href = "../">Home</a>
 </body>
 </html>

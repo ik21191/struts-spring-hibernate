@@ -9,8 +9,9 @@
 <title>Login Page</title>
 </head>
 <body>
-Login <a href="user/login">LOGIN</a>
-Register <a href="user/register">REGISTER</a>
+Login <a href="user/login">LOGIN</a><br/>
+Register <a href="user/register">REGISTER</a><br/>
+Display All Users <a href="user/users">Display All</a><br/>
 
 </body>
 </html>

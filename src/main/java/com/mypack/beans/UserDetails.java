@@ -1,7 +1,10 @@
 package com.mypack.beans;
 
-public class UserDetails {
+import java.io.Serializable;
 
+public class UserDetails implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private String firstName;
 	private String lastName;

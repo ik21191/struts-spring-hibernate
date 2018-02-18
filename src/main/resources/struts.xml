@@ -52,6 +52,26 @@
 			<result name="success">welcome.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
+		
+		<action name="users" class="com.mypack.struts2.actions.ManageUsers" method="displayAllUsers">
+			<result name="success">users.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		
+		<action name="deleteUser" class="com.mypack.struts2.actions.ManageUsers" method="deleteUser">
+			<result name="success" type="chain">users</result>
+			<result name="error">error.jsp</result>
+		</action>
+		
+		<action name="editUser" class="com.mypack.struts2.actions.EditUser" method="editUser">
+			<result name="success">editUser.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		
+		<action name="updateUser" class="com.mypack.struts2.actions.UpdateUser" method="updateUser">
+			<result name="success" type="chain">users</result>
+			<result name="error">error.jsp</result>
+		</action>
 
 	</package>
 </struts>

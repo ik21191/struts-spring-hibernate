@@ -50,8 +50,6 @@
         		<exclusion>
             	<groupId>javassist</groupId>
             	<artifactId>javassist</artifactId>
-            	
-            	
         		</exclusion>
     		</exclusions>
 		</dependency>
@@ -118,23 +116,11 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
-			<!-- <exclusions>
-        		<exclusion>
-            	<groupId>org.javassist</groupId>
-            	<artifactId>javassist</artifactId>
-        		</exclusion>
-    		</exclusions> -->
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>${hibernate.version}</version>
-			<!-- <exclusions>
-				<exclusion>
-					<groupId>org.javassist</groupId>
-					<artifactId>javassist</artifactId>
-				</exclusion>
-			</exclusions> -->
 		</dependency>
 		
 		<dependency>

@@ -5,21 +5,26 @@
 <hibernate-mapping>
 	<class name="com.mypack.beans.User" table="USER">
 		<id name="id" type="int" column="ID">
-			<generator class="increment"/>
+			<generator class="identity" />
 		</id>
-		<property name="userid" type="string">
+		<property name="userid" type="string" >
 			<column name="USERID" length="100" not-null="true" unique="true"/>
 		</property>
 		<property name="password" type="string">
 			<column name="PASSWORD" length="64" />
 		</property>
-		<many-to-one name="userDetails" column="details_id" class="com.mypack.beans.UserDetails" cascade="all"/>
+		<many-to-one name="userDetails" column="details_id" class="com.mypack.beans.UserDetails" cascade="all" lazy="false"/>
+		
+		<set name="hobbies" table="user_hobby" cascade="all" lazy="false">
+			<key column="hobby_id" />
+			<element column="hobby_name" type="string"/>
+		</set>
 		
 	</class>
 	
 	<class name="com.mypack.beans.UserDetails" table="USERDETAILS">
 		<id name="id" type="int" column="ID">
-			<generator class="increment"/>
+			<generator class="identity" />
 		</id>
 		<property name="firstName" type="string">
 			<column name="FIRSTNAME" length="64" />
