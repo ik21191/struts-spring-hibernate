@@ -16,7 +16,7 @@
 		<many-to-one name="userDetails" column="details_id" class="com.mypack.beans.UserDetails" cascade="all" lazy="false"/>
 		
 		<set name="hobbies" table="user_hobby" cascade="all" lazy="false">
-			<key column="hobby_id" />
+			<key column="user_id" />
 			<element column="hobby_name" type="string"/>
 		</set>
 		

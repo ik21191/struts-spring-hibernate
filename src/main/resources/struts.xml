@@ -42,8 +42,7 @@
 		</action>
 
 		<action name="saveUser" class="com.mypack.struts2.actions.RegisterAction">
-			<exception-mapping exception="java.io.IOException"
-				result="login"></exception-mapping>
+			<exception-mapping exception="java.io.IOException" result="login"></exception-mapping>
 			<result name="details">details.jsp</result>
 			<result name="error">registerError.jsp</result>
 		</action>
