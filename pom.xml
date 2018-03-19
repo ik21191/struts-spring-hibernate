@@ -25,6 +25,8 @@
 		<!-- Logging -->
 		<logback.version>1.0.13</logback.version>
 		<slf4j.version>1.7.5</slf4j.version>
+		
+		<deployFolder>E:/apache-tomcat-7/apache-tomcat-7.0.76/webapps</deployFolder>
 	
 	</properties>
 	
@@ -103,7 +105,7 @@
             <artifactId>spring-web</artifactId>
             <version>4.0.6.RELEASE</version>
         </dependency>
-
+        
 		<!-- Spring ORM support -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -157,6 +159,33 @@
 	<build>
 		<finalName>struts-spring-hibernate</finalName>
 		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<!-- <warSourceDirectory>WebContent</warSourceDirectory> -->
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<!-- <phase>integration-test</phase> -->
+						<phase>package</phase>
+						<configuration>
+							<tasks>
+								<copy file="target/${pom.build.finalName}.war" tofile="${deployFolder}/${pom.build.finalName}.war" />
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
